@@ -1,0 +1,75 @@
+<?php
+
+//1.Write a PHP function to sort an array of strings by their length, in ascending order.
+
+function sortArrayLength($arr){
+
+usort($arr, function($a, $b) {
+  return strlen($a) - strlen($b);
+
+});
+   return $arr;
+}
+$string=array("Casemiroo","Clinton","Billy","Hill","Messi","Alvarezz");
+$sorted = sortArrayLength($string);
+print_r($sorted);
+
+//2.Write a PHP function to concatenate two strings,
+but with the second string starting from the end of the first string.
+function addString($str1, $str2) {
+  $len1 = strlen($str1);
+  $len2 = strlen($str2);
+  $combine = "";
+  $i = 0;
+
+  while ($i < $len1 + $len2) {
+      if ($i < $len1) {
+          $combine .= $str1[$i];
+      } else {
+          $combine .= $str2[$i - $len1];
+      }
+      $i++;
+  }
+
+  return $combine;
+}
+$string1 = "Forrest";                           
+$string2 = "Gump";
+$result = addString($string1, $string2);
+echo $result;
+
+
+//3.Write a PHP function to remove the first and last elementfrom an array and return the remaining elements as a new array.
+
+function removeFirstOLast($array){
+  array_shift($array);
+  //array_pop($array);
+  return $array;
+}
+$arr=array(3,8,5,6,7,5,12);
+$result=removeFirstOLast($arr);
+print_r($result);
+
+
+//4.Write a PHP function to check if a string contains only letters and whitespace.
+
+function containsOnlyLettersAndWhitespace($str) {
+  return preg_match('/^[a-zA-Z\s]+$/', $str);
+}
+$string="Leo Messi@";
+if (containsOnlyLettersAndWhitespace($string)) {
+  echo  " $string contains only letters and whitespace";
+} else {
+  echo "$string contains other characters too.";
+}
+
+
+//5. Write a PHP function to find the second largest number in an array of numbers.
+
+$numbers = array(10, 5, 8, 20, 3,15);
+usort($numbers, function($a, $b) {
+  return $b - $a;
+});
+
+$second_largest = $numbers[1];
+echo "Second largest number is: " . $second_largest;
